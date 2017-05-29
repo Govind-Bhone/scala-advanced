@@ -37,7 +37,7 @@ case object AbbrevNil extends AbbrevList[Nothing] {
 // A non-empty AbbrevList characterized by a head and a tail.
 
 final case class cons[B](private var hd: B,
-                         private[list] var tl: AbbrevList[B]) extends AbbrevList[B] {
+                         private var tl: AbbrevList[B]) extends AbbrevList[B] {
 
   override def isEmpty: Boolean = false
 

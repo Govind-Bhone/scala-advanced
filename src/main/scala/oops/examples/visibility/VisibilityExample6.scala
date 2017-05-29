@@ -35,9 +35,9 @@ package scopeA {
 
   private class PrivateClass4
 
-  class PrivateClass5 extends PrivateClass4
+/*  class PrivateClass5 extends PrivateClass4
 
-  protected class PrivateClass6 extends PrivateClass4
+  protected class PrivateClass6 extends PrivateClass4*/
 
   private class PrivateClass7 extends PrivateClass4
 

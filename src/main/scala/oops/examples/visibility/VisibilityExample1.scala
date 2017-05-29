@@ -33,8 +33,9 @@ package scopeA {
 
 package scopeB {
 
-  class PrivateClass1B extends scopeA.PrivateClass1
-
   // ERROR
+  //class PrivateClass1B extends scopeA.PrivateClass1
+
+
 }
 

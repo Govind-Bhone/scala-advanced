@@ -31,10 +31,11 @@ which expects a pure function (not a lifted one) we get STUCK !
   final def apply[A, B](fa: F[A])(f: F[A => B]): F[B] = apply(f)(fa)
   override def fmap[A, B](f: A => B): F[A] => F[B] = apply(pure(f))
 
+
  */
 object ApplicativeExample1 extends App{
 
-//functor --(A=>B) => (C[A]=>C[B])
+  //functor --(A=>B) => (C[A]=>C[B])
 
   case class MyBox[T](val value:T)
 
@@ -44,11 +45,11 @@ object ApplicativeExample1 extends App{
 
   def rawLengthOf(a:String) : Int = a.length // the raw function we want to use
 
-  def transformedLenghtOf = map(rawLengthOf) // applying the transformation, so we get our new function
+  def transformedLenghtOf = map(rawLengthOf _) // applying the transformation, so we get our new function
 
   val result:MyBox[Int] = transformedLenghtOf( boxedstring ) // applying the new function
 
-  println(result)
+  println("Functor result is "+result)
 
   //monad--(A=>C[B]) => (C[A]=>C[B])
 
@@ -56,13 +57,18 @@ object ApplicativeExample1 extends App{
   def flatMap[A,B]( func:A=>MyBox[B] ): MyBox[A]=>MyBox[B] = (a:MyBox[A]) => func( a.value )
   val transformedLenghtOf1 = flatMap(lengthOf) // applying the transformation, so we get our new function
   val result1:MyBox[Int] = transformedLenghtOf1( boxedstring ) // applying the new function
-  println(result1)
+  println("Monad result is "+result1)
 
  //Applicative --( C[A=>B] ) => ( C[A]=>C[B] )
 
-  val boxedLengthOf:MyBox[String=>Int] = new MyBox( rawLengthOf _ )
-  def apply[A,B](b:MyBox[A=>B]): MyBox[A]=>MyBox[B] = (a:MyBox[A]) => new MyBox(b.value(a.value))
+  val boxedLengthOf:MyBox[String=>Int] = MyBox( rawLengthOf _)
+  def apply[A,B](b:MyBox[A=>B]): MyBox[A]=>MyBox[B] = (a:MyBox[A]) => MyBox(b.value(a.value))
   val transformedLenghtOf2 = apply(boxedLengthOf) // applying (*haha*) the transformation, to get our new function
   val result2:MyBox[Int] = transformedLenghtOf2( boxedstring ) // applying the new function
-  println(result2)
+  println("Applicative result is "+result2)
+
+
+  def map[A,B](boxedFunc:MyBox[A=>B]):MyBox[A]=>MyBox[B]=apply(boxedFunc)
+  println("Applicative result is "+map(boxedLengthOf)(boxedstring))
+
 }

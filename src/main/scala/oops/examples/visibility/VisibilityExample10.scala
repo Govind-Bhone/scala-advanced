@@ -35,12 +35,14 @@ package scopeA {
 
   private class PrivateClass4
 
-  class PrivateClass5 extends PrivateClass4
+  // ERROR
+  ///class PrivateClass5 extends PrivateClass4
+
 
   // ERROR
-  protected class PrivateClass6 extends PrivateClass4
+  //protected class PrivateClass6 extends PrivateClass4
 
-  // ERROR
+
   private class PrivateClass7 extends PrivateClass4
 
 }

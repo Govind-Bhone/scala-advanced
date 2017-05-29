@@ -1,4 +1,4 @@
-package oops.examples.visibility.t3
+package oops.examples.visibility.t300
 
 /**
   * Created by govind.bhone on 5/26/2017.
@@ -15,7 +15,7 @@ package scopeA {
 
   }
 
-  class PrivateClass3 extends PrivateClass1
+  /*class PrivateClass3 extends PrivateClass1
 
   protected class PrivateClass4 extends PrivateClass1
 
@@ -23,10 +23,12 @@ package scopeA {
 
   private[this] class PrivateClass6 extends PrivateClass1
 
-  private[this] class PrivateClass7 extends scopeA2.PrivateClass2
+  private[this] class PrivateClass7 extends scopeA2.PrivateClass2*/
 
 }
 
+/*
 package scopeB {
-  class PrivateClass1B extends scopeA.PrivateClass1
+  class PrivateClass1B extends oops.examples.visibility.t300.scopeA.PrivateClass1
 }
+*/
