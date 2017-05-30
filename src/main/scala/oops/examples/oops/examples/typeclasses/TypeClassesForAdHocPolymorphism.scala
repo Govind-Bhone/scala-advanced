@@ -1,4 +1,4 @@
-package oops.examples
+package oops.examples.oops.examples.typeclasses
 
 /**
   * Created by govind.bhone on 5/30/2017.
@@ -30,5 +30,6 @@ object TypeClassesForAdHocPolymorphism extends App{
 
   println(combine(1, 2))
   println(combine("abc", "xyz"))
+  println(combine("abc",combine("abc","xyz")))
 
 }

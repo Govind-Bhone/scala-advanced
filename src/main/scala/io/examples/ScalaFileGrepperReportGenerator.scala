@@ -38,5 +38,6 @@ object ScalaFileGrepperReportGenerator extends App {
     })
 
   })
+
   bw.close()
 }

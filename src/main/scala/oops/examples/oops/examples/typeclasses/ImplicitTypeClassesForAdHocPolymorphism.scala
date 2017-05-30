@@ -1,4 +1,4 @@
-package oops.examples
+package oops.examples.oops.examples.typeclasses
 
 /**
   * Created by govind.bhone on 5/30/2017.
