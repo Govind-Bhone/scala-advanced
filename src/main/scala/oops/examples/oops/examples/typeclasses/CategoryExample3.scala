@@ -30,4 +30,34 @@ object CategoryExample3 extends App {
   object ListFunctor extends Functor[List] {
     def fmap[A, B](f: A => B): List[A] => List[B] = as => as map f
   }
+
+
+  //more general form
+  object Functor {
+
+    def fmap[A, B, F[_]](as: F[A])(f: A => B)(implicit functor: Functor[F]): F[B] =
+      functor.fmap(as)(f)
+
+    implicit object ListFunctor extends Functor[List] {
+      def fmap[A, B](f: A => B): List[A] => List[B] =
+        as => as map f
+    }
+  }
+
+  println(Functor.fmap(List(10,20,30,40,50))(_*2))
+
+
+  implicit object OptionFunctor extends Functor[Option] {
+    def fmap[A, B](f: A => B): Option[A] => Option[B] =
+      o => o map f
+  }
+
+  implicit object Function0Functor extends Functor[Function0] {
+    def fmap[A, B](f: A => B): Function0[A] => Function0[B] =
+      a => () => f(a())
+  }
+
+  val f = (s: String) => s.length
+  val lifted = Function0Functor.fmap(() => "abc")(f)
+  println(lifted())
 }
