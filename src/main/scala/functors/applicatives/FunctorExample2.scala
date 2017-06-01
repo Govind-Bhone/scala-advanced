@@ -49,7 +49,7 @@ object FunctorExample2 extends App {
 
   def func(b:String):Int=b.length
 
-  def map1[A,B](func:A=>B):Box[A]=>Box[B]=(a:Box[A])=>Box(func(a.value))
+  def map1[A,B](func:A=>B): Box[A]=>Box[B] =(a:Box[A])=>Box(func(a.value))
 
   println(map1(func)(Box("govind")))
 

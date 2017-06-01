@@ -1,4 +1,4 @@
-package oops.examples.oops.examples.typeclasses
+package oops.examples.typeclasses
 
 /**
   * Created by govind.bhone on 5/30/2017.
@@ -79,8 +79,6 @@ object CategoryExample4 extends App {
     }
 
   }
-
-  import Applicative._
 
   //  apply(Option(1))(apply(Option(2))(pure(f))
 
