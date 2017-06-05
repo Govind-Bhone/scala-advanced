@@ -26,27 +26,27 @@ trait AnimalContainer {
 }
 
 trait MamalContainer extends AnimalContainer {
-  type  A >: Mamal
+  type A >: Mamal
 }
 
-trait BirdsContainer extends AnimalContainer{
+trait BirdsContainer extends AnimalContainer {
   type A >: Birds
 }
 
-object TypeAliasExample3 extends App{
+object TypeAliasExample3 extends App {
 
-  val mamals = new AnimalContainer with MamalContainer{
+  val mamals = new AnimalContainer with MamalContainer {
     override def getName = Human
   }
 
-  val birds = new AnimalContainer with BirdsContainer{
+  val birds = new AnimalContainer with BirdsContainer {
     override def getName = Sparrow
   }
 
   //Gives Error
-//  val birds1 = new AnimalContainer with BirdsContainer{
-//    override def getName = Human
-//  }
+  //  val birds1 = new AnimalContainer with BirdsContainer{
+  //    override def getName = Human
+  //  }
 
   println(mamals.getName)
   println(birds.getName)
